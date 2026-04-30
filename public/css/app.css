@@ -1,0 +1,275 @@
+/* ===== RESET GENERAL ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+html, body {
+    font-family: Arial, sans-serif;
+    background: #ffffff !important; 
+    min-height: 100vh;
+}
+
+/* ===== BARRA SUPERIOR ===== */
+.top-bar {
+    background-color: #f6e5c0 !important;
+    color: #A57034;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+/* ===== HEADER ===== */
+/* ===== HEADER NUEVO ===== */
+.main-header {
+    background: #E8BC63;
+    border-bottom: 4px solid #A57034;
+}
+
+/* FILA SUPERIOR */
+.main-header .container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 25px;
+}
+
+/* LOGO */
+.logo-section img {
+    height: 85px;
+    width: auto;
+}
+
+/* BUSCADOR */
+.search-section input {
+    width: 420px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    background: #f6e5c0;
+    outline: none;
+}
+
+/* ICONOS */
+.icons-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icons-section a {
+    text-decoration: none;
+    color: #944C24;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+/* MENÚ INFERIOR */
+.menu-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 0;
+    background: #ffffff;
+}
+
+/* BOTONES */
+.menu-buttons a {
+    text-decoration: none;
+    color: #944C24;
+    border: 1px solid #944C24;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.menu-buttons a:hover {
+    background: #944C24;
+    color: white;
+}
+
+/* ===== BANNER ===== */
+.banner {
+    background: linear-gradient(135deg, #2e7d32a8, #66bb6a9c);
+    color: white;
+}
+
+
+.banner h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.banner p {
+    font-size: 1.2rem;
+}
+
+/* ===== SECCIONES ===== */
+.accesos {
+    background: transparent;
+    padding: 40px 0;
+}
+
+/* ===== CONTENEDORES ===== */
+.container {
+    background: transparent !important;
+}
+
+/* ===== TARJETAS ===== */
+.card-custom {
+    background:  rgb(183, 215, 182);
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.card-custom:hover {
+    transform: scale(1.03);
+}
+
+/* ===== IMÁGENES ===== */
+.card img {
+    border-radius: 10px;
+    max-width: 100%;
+}
+
+/* ===== CARRUSEL ===== */
+.carousel img {
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* ===== TEXO DEL CARRUSEL ===== */
+
+.carousel-caption h5 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: white;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+}
+
+.carousel-caption p {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+/* ===== FOOTER SUPERIOR ===== */
+.footer-top {
+    background: #3f9351;
+    color: rgb(255, 255, 255);
+    padding: 30px 0;
+    text-align: center;
+}
+
+/* ===== FOOTER FINAL ===== */
+footer {
+    background: #fcfcfc;
+    color: rgb(156, 89, 0);
+    padding: 30px;
+}
+
+footer a {
+    color: #94522c;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ===== LOGIN / REGISTER ===== */
+.card {
+    border-radius: 12px;
+}
+
+input {
+    border-radius: 8px !important;
+}
+
+button {
+    border-radius: 8px !important;
+}
+
+/* ===== FORMULARIOS ===== */
+form label {
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+form input,
+form textarea,
+form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+/* ===== BOTONES ===== */
+button {
+    cursor: pointer;
+}
+
+.btn {
+    transition: all 0.2s ease;
+}
+
+.btn:active {
+    transform: scale(0.95);
+    box-shadow: inset 0 3px 6px rgba(0,0,0,0.2);
+}
+/* ===== RESPONSIVE ARREGLAR===== */
+@media (max-width: 768px) {
+    .banner {
+        padding: 60px 15px;
+    }
+
+    .banner h1 {
+        font-size: 1.8rem;
+    }
+
+    /* 🔴 FONDO GENERAL */
+body {
+    background-color: #1b4332; /* verde oscuro */
+    margin: 0;
+    padding: 0;
+}
+
+/* 🟢 CONTENEDOR PRINCIPAL */
+.contenedor-registro {
+    background-color: #d8f3dc; /* verde pastel */
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* 🟢 INPUTS MÁS LIMPIOS */
+input {
+    border-radius: 8px !important;
+}
+
+/* 🟢 BOTÓN */
+button {
+    background-color: #2d6a4f !important;
+    border: none;
+}
+
+button:hover {
+    background-color: #1b4332 !important;
+}
+}

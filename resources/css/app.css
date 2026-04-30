@@ -1,0 +1,156 @@
+/* ===== RESET GENERAL ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+html, body {
+    font-family: Arial, sans-serif;
+    background: #90ff10 !important; /* verde suave */
+    min-height: 100vh;
+}
+
+/* ===== BARRA SUPERIOR ===== */
+.top-bar {
+    background-color: #1b5e20 !important;
+    color: rgb(233, 29, 29);
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: #2e7d32;
+    color: rgb(252, 89, 89);
+    padding: 15px 0;
+}
+
+/* ===== NAV BOTONES ===== */
+header a {
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+/* ===== BANNER ===== */
+.banner {
+    background: linear-gradient(135deg, #2e7d32, #66bb6a);
+    color: rgb(192, 40, 40);
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.banner h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.banner p {
+    font-size: 1.2rem;
+}
+
+/* ===== SECCIONES ===== */
+.accesos {
+    background: transparent;
+    padding: 40px 0;
+}
+
+/* ===== CONTENEDORES ===== */
+.container {
+    background: transparent !important;
+}
+
+/* ===== TARJETAS ===== */
+.card-custom {
+    background: rgb(189, 43, 43);
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.card-custom:hover {
+    transform: scale(1.03);
+}
+
+/* ===== IMÁGENES ===== */
+.card img {
+    border-radius: 10px;
+    max-width: 100%;
+}
+
+/* ===== CARRUSEL ===== */
+.carousel img {
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* ===== FOOTER SUPERIOR ===== */
+.footer-top {
+    background: #2e7d32;
+    color: rgb(253, 127, 127);
+    padding: 30px 0;
+    text-align: center;
+}
+
+/* ===== FOOTER FINAL ===== */
+footer {
+    background: #1b1b1b;
+    color: rgb(255, 124, 124);
+    padding: 30px;
+}
+
+footer a {
+    color: #06ff0f;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ===== LOGIN / REGISTER ===== */
+.card {
+    border-radius: 12px;
+}
+
+input {
+    border-radius: 8px !important;
+}
+
+button {
+    border-radius: 8px !important;
+}
+
+/* ===== FORMULARIOS ===== */
+form label {
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+form input,
+form textarea,
+form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+/* ===== BOTONES ===== */
+button {
+    cursor: pointer;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .banner {
+        padding: 60px 15px;
+    }
+
+    .banner h1 {
+        font-size: 1.8rem;
+    }
+}
