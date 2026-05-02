@@ -39,4 +39,29 @@ class ProductoController extends Controller
 
         return redirect()->route('productos.index');
     }
+    public function edit(Producto $producto)
+{
+    return view('productos.edit', compact('producto'));
+}
+
+public function update(Request $request, Producto $producto)
+{
+    $request->validate([
+        'nombre' => 'required',
+        'descripcion' => 'required',
+        'precio' => 'required|numeric',
+        'stock' => 'required|integer'
+    ]);
+
+    $producto->update($request->all());
+
+    return redirect()->route('productos.index');
+}
+
+public function destroy(Producto $producto)
+{
+    $producto->delete();
+
+    return redirect()->route('productos.index');
+}
 }

@@ -6,33 +6,65 @@
 
     <h1>Gestión de publicaciones</h1>
 
-    <a href="{{ route('posts.create') }}"> class="btn btn"
+    <br>
+<a href="{{ route('dashboard') }}" class="btn btn-secondary" style="margin-right: 15px;">
+    Volver
+</a>
+    <a href="{{ route('posts.create') }}" class="btn btn-primary">
         Crear publicación
     </a>
+
+    <br><br>
 
     @if(session('ok'))
         <p>{{ session('ok') }}</p>
     @endif
 
-    @foreach($posts as $post)
-        <tr>
-            <td>{{ $post->id }}</td>
-            <td>{{ $post->title }}</td> {{-- XSS protegido --}}
-            <td>{{ $post->status }}</td>
-            <td>
-                <a href="{{ route('posts.edit',$post->id) }}">Editar</a>
+    <table border="1" style="border-collapse: collapse; width: 100%; text-align: center;">
+        <thead>
+            <tr>
+                <th style="padding: 15px;">ID</th>
+                <th style="padding: 15px;">Título</th>
+                <th style="padding: 15px;">Estado</th>
+                <th style="padding: 15px;">Acciones</th>
+            </tr>
+        </thead>
 
-                <form method="POST"
-                      action="{{ route('posts.destroy',$post->id) }}"
-                      style="display:inline">
+        <tbody>
+            @foreach($posts as $post)
+            <tr>
+                <td style="padding: 15px;">{{ $post->id }}</td>
+                <td style="padding: 15px;">{{ $post->title }}</td>
+                <td style="padding: 15px;">{{ $post->status }}</td>
+                <td style="padding: 15px;">
 
-                    @csrf
-                    @method('DELETE')
+                    <a href="{{ route('posts.edit',$post->id) }}"
+                        class="btn-cafe"
+   style="margin-right: 10px;">
+                        Editar
+                    </a>
 
-                    <button type="submit">Eliminar</button>
-                </form>
-            </td>
-        </tr>
-    @endforeach
+                  <form method="POST"
+      action="{{ route('posts.destroy',$post->id) }}"
+      class="form-inline">
+
+    @csrf
+    @method('DELETE')
+
+    <button type="submit"
+            class="btn-cafe"
+            style="margin-left: 10px;">
+        Eliminar
+    </button>
+
+</form>
+
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
 </div>
+
 @endsection
