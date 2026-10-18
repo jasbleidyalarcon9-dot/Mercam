@@ -2,6 +2,11 @@
 # Arranque del contenedor en la nube: puerto dinámico, migraciones, datos base y cachés.
 set -e
 
+# Apache con mod_php necesita un solo MPM (prefork). Si la imagen trae otro
+# activado, Apache no arranca ("More than one MPM loaded").
+rm -f /etc/apache2/mods-enabled/mpm_event.* /etc/apache2/mods-enabled/mpm_worker.*
+a2enmod -q mpm_prefork >/dev/null 2>&1 || true
+
 # Railway y Render asignan el puerto en la variable PORT
 PORT="${PORT:-8080}"
 sed -i "s/^Listen .*/Listen ${PORT}/" /etc/apache2/ports.conf
