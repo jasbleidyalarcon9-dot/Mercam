@@ -9,3 +9,7 @@
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
+
+# Scripts del contenedor: siempre con saltos de línea Linux (Windows rompe el arranque)
+*.sh text eol=lf
+Dockerfile text eol=lf
