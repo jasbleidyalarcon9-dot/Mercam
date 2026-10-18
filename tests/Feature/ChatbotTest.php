@@ -91,7 +91,7 @@ class ChatbotTest extends TestCase
         ])->assertOk();
 
         Http::assertSent(function (Request $request) {
-            $contenido = json_encode($request->data());
+            $contenido = json_encode($request->data(), JSON_UNESCAPED_UNICODE);
             $ultimo = collect($request['contents'])->last();
 
             return str_contains($request['systemInstruction']['parts'][0]['text'], 'Tipo de usuario actual: consumidor')
