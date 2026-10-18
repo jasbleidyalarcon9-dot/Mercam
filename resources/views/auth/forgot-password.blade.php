@@ -1,25 +1,28 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+@extends('layouts.app')
+
+@section('content')
+<div class="login-wrapper">
+    <div class="form-container">
+        <h1>Recuperar contraseña</h1>
+
+        @if ($errors->any())
+            <div class="success-message" style="background:#c0392b;">
+                <ul style="margin:0; padding-left:18px; text-align:left;">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <p style="color:#fff;">Escribe tu correo y te enviaremos un enlace para crear una contraseña nueva.</p>
+
+        <form method="POST" action="{{ route('password.email') }}">
+            @csrf
+            <input type="email" name="email" placeholder="Correo electrónico" value="{{ old('email') }}" required autofocus>
+            <button type="submit">Enviar enlace</button>
+            <a href="{{ route('login') }}">Volver a iniciar sesión</a>
+        </form>
     </div>
-
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('password.email') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</div>
+@endsection

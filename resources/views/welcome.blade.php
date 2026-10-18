@@ -34,7 +34,7 @@
 
         <!-- LOGO -->
         <div class="logo-section">
-            <img src="{{ asset('img/image.png') }}" alt="Logo MERCAM">
+            <img src="{{ asset('img/Logomercam.png') }}" alt="Logo MERCAM">
         </div>
 
         <!-- BUSCADOR -->

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,11 +16,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Los roles deben existir ANTES de crear usuarios.
+        $this->call(RoleSeeder::class);
 
-        User::factory()->create([
+        $consumidor = Role::where('name', 'consumidor')->first();
+
+        $user = User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // role_id se asigna directo, NUNCA por mass-assignment (ver User::$fillable)
+        $user->role_id = $consumidor->id;
+        $user->save();
     }
 }

@@ -1,83 +1,70 @@
-<x-guest-layout>
+@extends('layouts.app')
 
-    <div class="contenedor-registro" style="max-width:700px; margin:50px auto;">
+@section('content')
+<div class="login-wrapper">
+    <div class="form-container">
+        <h1>Crear cuenta</h1>
 
-        <!-- 🔴 TEXTO -->
-        <h2 style="color:#6b3e26; font-weight:bold;">
-            MERCAM
-        </h2>
+        @if ($errors->any())
+            <div class="success-message" style="background:#c0392b;">
+                <ul style="margin:0; padding-left:18px; text-align:left;">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-        <p class="mt-3">
-            La estrategia de Mercados Campesinos, impulsa la disponibilidad y suministro de alimentos saludables en términos de calidad, cuidado y variedad. Adicionalmente, se convierte en una vitrina de oportunidades para que los productores campesinos comercialicen sus productos a un buen precio y sin intermediarios, fortaleciendo la seguridad alimentaria.
-        </p>
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
 
-        <h5 style="color:#6b3e26; font-weight:bold;" class="mt-4">
-            Autorización para el tratamiento de datos personales*
-        </h5>
+            <input type="text" name="name" placeholder="Nombre completo"
+                   value="{{ old('name') }}" required autofocus>
 
-        <p style="font-size:14px; text-align:justify;">
-            En cumplimiento de lo dispuesto en la Ley 1581 de 2012 y el Decreto 1377 de 2013, la Secretaría Distrital de Desarrollo Económico solicita su autorización para el tratamiento de sus datos personales.
-        </p>
+            <input type="email" name="email" placeholder="Correo electrónico"
+                   value="{{ old('email') }}" required>
 
-        <ul style="font-size:14px;">
-            <li>Generar alertas y beneficios.</li>
-            <li>Actualizar información.</li>
-            <li>Enviar información de interés.</li>
-            <li>Análisis estadístico.</li>
-        </ul>
+            <input type="password" name="password" placeholder="Contraseña (mínimo 8 caracteres)" required>
 
-        <p style="font-size:14px;">
-            El titular podrá ejercer sus derechos conforme a la normativa vigente.
-        </p>
+            <input type="password" name="password_confirmation" placeholder="Confirmar contraseña" required>
 
-        <!-- 🔴 CHECKBOX -->
-        <div style="margin-top:15px;">
-            <label style="font-size:14px;">
-                <input type="checkbox" name="terms" form="formRegistro" required>
-                Autoriza el tratamiento de datos personales
-            </label>
-        </div>
+            {{-- Tipo de cuenta: define el rol (productor/consumidor).
+                 "administrador" NUNCA aparece aquí; ese rol solo se asigna
+                 manualmente en la base de datos. --}}
+            <div style="text-align:left; color:#000000; margin-bottom:16px;">
+                <p style="margin-bottom:8px; font-weight:600;">Quiero registrarme como:</p>
 
-        <!-- 🟢 FORMULARIO ABAJO -->
-        <div style="margin-top:30px;">
+                <label style="display:block; margin-bottom:6px; cursor:pointer;">
+                    <input type="radio" name="tipo_cuenta" value="productor"
+                           {{ old('tipo_cuenta') === 'productor' ? 'checked' : '' }} required>
+                    Productor — quiero vender mis productos agrícolas
+                </label>
 
-            <form id="formRegistro" method="POST" action="{{ route('register') }}">
-                @csrf
+                <label style="display:block; cursor:pointer;">
+                    <input type="radio" name="tipo_cuenta" value="consumidor"
+                           {{ old('tipo_cuenta') === 'consumidor' ? 'checked' : '' }} required>
+                    Consumidor — quiero comprar productos
+                </label>
+            </div>
 
-                <div class="mt-3">
-                    <x-input-label for="name" value="Nombre" />
-                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" required />
-                </div>
-
-                <div class="mt-3">
-                    <x-input-label for="email" value="Correo" />
-                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" required />
-                </div>
-
-                <div class="mt-3">
-                    <x-input-label for="password" value="Contraseña" />
-                    <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required />
-                </div>
-
-                <div class="mt-3">
-                    <x-input-label for="password_confirmation" value="Confirmar Contraseña" />
-                    <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
-                </div>
-
-                <div class="flex items-center justify-end mt-4">
-                    <a class="underline text-sm text-gray-600" href="{{ route('login') }}">
-                        ¿Ya tienes cuenta?
+            <div style="text-align:left; color:#000000; margin-bottom:16px;">
+                <label style="display:block; cursor:pointer;">
+                    <input type="checkbox" name="acepta_tratamiento_datos" value="1"
+                           {{ old('acepta_tratamiento_datos') ? 'checked' : '' }} required>
+                    Acepto la
+                    <a href="{{ route('legal.politica-datos') }}" target="_blank" style="color:#2b1717; text-decoration:underline;">
+                        política de tratamiento de datos personales
                     </a>
+                    (Ley 1581 de 2012).
+                </label>
+            </div>
 
-                    <x-primary-button class="ms-4">
-                        Registrarse
-                    </x-primary-button>
-                </div>
+            <button type="submit">Registrarme</button>
 
-            </form>
-
-        </div>
-
+            <div class="auth-links">
+                <a href="{{ route('login') }}">¿Ya tienes cuenta? Inicia sesión</a>
+            </div>
+        </form>
     </div>
-
-</x-guest-layout>
+</div>
+@endsection

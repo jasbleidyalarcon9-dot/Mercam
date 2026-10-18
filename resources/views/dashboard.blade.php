@@ -12,10 +12,6 @@
                 <a href="{{ route('posts.index') }}" class="btn btn-success">
                     Publicaciones
                 </a>
-
-                <a href="{{ route('productos.index') }}" class="btn btn-outline-success">
-                    Productos
-                </a>
             </div>
 
         </div>
