@@ -18,6 +18,11 @@ return [
         'key' => env('POSTMARK_API_KEY'),
     ],
 
+    // Envío de correos por API (verificación de cuenta y recuperación de contraseña en la nube)
+    'brevo' => [
+        'key' => env('BREVO_API_KEY'),
+    ],
+
     'resend' => [
         'key' => env('RESEND_API_KEY'),
     ],
@@ -26,6 +31,15 @@ return [
         'key' => env('AWS_ACCESS_KEY_ID'),
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+    ],
+
+    // Asistente virtual "Campi" (Google AI Studio / Gemini)
+    'gemini' => [
+        'key' => env('GEMINI_API_KEY'),
+        'model' => env('GEMINI_MODEL', 'gemini-flash-latest'),
+        // Si el modelo principal está saturado (error 503) se prueban estos, en orden
+        'fallback_models' => env('GEMINI_FALLBACK_MODELS', 'gemini-flash-lite-latest,gemini-2.5-flash'),
+        'timeout' => env('GEMINI_TIMEOUT', 15),
     ],
 
     'slack' => [
