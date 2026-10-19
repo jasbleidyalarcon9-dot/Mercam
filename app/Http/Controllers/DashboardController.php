@@ -8,7 +8,12 @@ class DashboardController extends Controller
     {
         $user = auth()->user();
 
-        if (in_array($user->role?->name, ['productor', 'administrador'], true)) {
+        // El administrador modera la plataforma: llega a su propio panel
+        if ($user->role?->name === 'administrador') {
+            return redirect()->route('admin.dashboard');
+        }
+
+        if ($user->role?->name === 'productor') {
             return redirect()->route('productor.dashboard');
         }
 

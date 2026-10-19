@@ -28,16 +28,15 @@
             @auth
                 @php($rol = auth()->user()->role?->name)
 
-                @if (in_array($rol, ['productor', 'administrador']))
+                {{-- Menú según el rol: cada tipo de cuenta ve solo lo suyo --}}
+                @if ($rol === 'administrador')
+                    <a href="{{ route('admin.dashboard') }}">Admin</a>
+                @elseif ($rol === 'productor')
                     <a href="{{ route('posts.mine') }}">Mis productos</a>
                     <a href="{{ route('productor.dashboard') }}">Panel</a>
                 @else
                     <a href="{{ route('carrito.index') }}" class="nav-cart">🛒 Carrito</a>
                     <a href="{{ route('pedidos.index') }}">Mis pedidos</a>
-                @endif
-
-                @if ($rol === 'administrador')
-                    <a href="{{ route('admin.dashboard') }}">Admin</a>
                 @endif
 
                 <a href="{{ route('perfil.edit') }}" class="d-flex align-items-center" style="gap:6px; text-decoration:none; color:inherit;">
