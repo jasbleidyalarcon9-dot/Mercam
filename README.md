@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <strong>🌐 Demo en vivo:</strong> <a href="https://TU-APP.up.railway.app">https://TU-APP.up.railway.app</a> ·
+  <strong>🌐 Demo en vivo:</strong> <a href="https://mercam-production.up.railway.app">https://mercam-production.up.railway.app</a> ·
   <strong>🎥 Video:</strong> <a href="#">enlace al video</a>
 </p>
 
@@ -318,7 +318,7 @@ El proyecto incluye un `Dockerfile` de tres etapas: compila los recursos con Vit
    | `APP_ENV` | `production` |
    | `APP_DEBUG` | `false` |
    | `APP_KEY` | resultado de `php artisan key:generate --show` en tu PC |
-   | `APP_URL` | `https://<tu-app>.up.railway.app` |
+   | `APP_URL` | `https://mercam-production.up.railway.app` |
    | `APP_LOCALE` / `APP_FALLBACK_LOCALE` | `es` |
    | `PORT` | `8080` |
    | `LOG_CHANNEL` | `stderr` (los errores aparecen en los logs de Railway) |
